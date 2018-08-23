@@ -38,6 +38,18 @@ public class AppUser {
     @JoinTable(joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<AppRole> appRoles;
 
+    public AppUser(String email, String password, String firstName, String lastName, boolean enabled, String username) {
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.enabled = enabled;
+        this.username = username;
+    }
+
+    public AppUser() {
+    }
+
     public String getPassword(){
 //        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 //        String hashedPassword = passwordEncoder.encode(password);
