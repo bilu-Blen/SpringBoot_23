@@ -22,15 +22,20 @@ public class DataLoader implements CommandLineRunner{
 
     @Override
     public void run(String... strings) throws Exception {
+        AppRole adminRole = roleRepository.findByAppRole("ADMIN");
+        AppRole userRole = roleRepository.findByAppRole("USER");
         roleRepository.save(new AppRole("USER"));
         roleRepository.save(new AppRole("ADMIN"));
 
-        AppRole adminRole = roleRepository.findByAppRole("ADMIN");
-        AppRole userRole = roleRepository.findByAppRole("USER");
+
+
+
 
         AppUser appUser = new AppUser("bob@bob.com", "bob", "Bob", "Bobberson", true, "bob");
-        appUser.setAppRoles(Arrays.asList(userRole));
-        appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
+         appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
+
+        userRepository.save(appUser);
+        appUser.setAppRoles(Arrays.asList(adminRole));
         userRepository.save(appUser);
 
         appUser = new AppUser("jim@jim.com", "jim", "jim", "Jimmerson", true, "jim");

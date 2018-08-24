@@ -15,7 +15,7 @@ public class AppRole {
     @Column(unique = true)
     private String appRole;
 
-    @ManyToMany(mappedBy = "appRoles", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "appRoles")
     private Collection<AppUser> appUsers;
 
     public AppRole(String appRole) {

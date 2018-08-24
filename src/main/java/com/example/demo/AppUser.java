@@ -35,7 +35,7 @@ public class AppUser {
     private String username;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+//    @JoinTable(joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<AppRole> appRoles;
 
     public AppUser(String email, String password, String firstName, String lastName, boolean enabled, String username) {
